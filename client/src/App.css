@@ -32,7 +32,7 @@ subtext {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.5); /* Half transparent background */
+  background-color: rgba(255, 255, 255, 0.5);
   z-index: 10;
   display: flex;
   justify-content: center;
@@ -41,7 +41,7 @@ subtext {
 
 .search-input {
   width: 100%;
-  max-width: 800px; /* You can adjust the maximum width of the input field */
+  max-width: 800px;
   padding: 5px 10px;
   font-size: 16px;
   border-radius: 5px;
