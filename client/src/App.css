@@ -7,6 +7,47 @@ subtext {
   text-decoration: Nnne; /* no underline */
 }
 
+.search-toggle-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+.search-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 11;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.search-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5); /* Half transparent background */
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 800px; /* You can adjust the maximum width of the input field */
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
 recipeTitle {
   font-family: "Frank Ruhl Libre";
   font-style: normal;

@@ -4,30 +4,28 @@ import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import './../App.css';
-import randomRecipes from'../randomRecipes.json'
 
-
-function RecipeGrid() {
-    return (
-        <Container fluid="md">
-        <Row>
+function RecipeGrid({ recipes }) {
+  return (
+    <Container fluid="md">
+      <Row>
         <>
-        {randomRecipes.recipes.map((r) => (
-          <Col>
-          <RecipeCard 
-            sourceUrl={r.sourceUrl}
-            image={r.image} 
-            dishType={r.dishTypes[0] && r.dishTypes[0].toUpperCase()} 
-            title={r.title}
-            readyInMinutes={r.readyInMinutes}
-            aggregateLikes={r.aggregateLikes}>
-          </RecipeCard>
-          </Col>
-        ))}
-      </>
+          {recipes.map((r) => (
+            <Col key={r.id}>
+              <RecipeCard
+                sourceUrl={r.sourceUrl}
+                image={r.image}
+                dishType={r.dishTypes[0] && r.dishTypes[0].toUpperCase()}
+                title={r.title}
+                readyInMinutes={r.readyInMinutes}
+                aggregateLikes={r.aggregateLikes}
+              />
+            </Col>
+          ))}
+        </>
       </Row>
-      </Container>
-    );
-  }
-  
+    </Container>
+  );
+}
+
 export default RecipeGrid;
