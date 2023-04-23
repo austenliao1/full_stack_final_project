@@ -24,14 +24,14 @@ subtext {
 }
 
 .search-toggle-container {
-  position: absolute;
+  position: fixed;
   top: 10px;
   right: 10px;
   z-index: 10;
 }
 
 .search-toggle {
-  position: absolute;
+  position: fixed;
   top: 10px;
   right: 10px;
   z-index: 11;
@@ -43,25 +43,38 @@ subtext {
   cursor: pointer;
 }
 
+
 .search-bar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.5);
   z-index: 10;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: 10px 0;
 }
 
 .search-input {
   width: 100%;
   max-width: 800px;
+  margin-bottom: 10px;
   padding: 5px 10px;
   font-size: 16px;
   border-radius: 5px;
   border: 1px solid #ccc;
+}
+
+.search-checkbox {
+  margin-right:45%;
+  display: flex;
+  align-items: center;
+}
+
+.search-checkbox-label {
+  margin-left: 5px;
 }
 
 recipeTitle {

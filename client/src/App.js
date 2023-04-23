@@ -10,28 +10,35 @@ function App() {
   const [currentForm, setCurrentForm] = useState("login");
   const [searchTerm, setSearchTerm] = useState("");
   const [searchBarVisible, setSearchBarVisible] = useState(false);
+  const [includeVegan, setIncludeVegan] = useState(false);
 
   const toggleForm = (formName) => {
     setCurrentForm(formName);
   };
 
-  const handleSearch = (term) => {
+  const handleSearch = (term, isVegan) => {
     setSearchTerm(term);
+    setIncludeVegan(isVegan);
   };
+
+  const handleVeganToggle = (value) => {
+    setIncludeVegan(value);
+  };
+  
 
   const toggleSearchBar = () => {
     setSearchBarVisible(!searchBarVisible);
   };
 
   const filteredRecipes = randomRecipes.recipes.filter((recipe) =>
-    recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
+    recipe.title.toLowerCase().includes(searchTerm.toLowerCase()) && (includeVegan ? recipe.vegan : true)
   );
 
   return (
     <div className="App">
       <header className="App-header">
         {searchBarVisible && (
-          <SearchBar onSearch={handleSearch} onToggle={toggleSearchBar} />
+          <SearchBar onSearch={handleSearch} onToggle={toggleSearchBar} includeVegan={includeVegan} onVeganToggle={handleVeganToggle} />
         )}
         <button onClick={toggleSearchBar} className="search-toggle">
           Search
