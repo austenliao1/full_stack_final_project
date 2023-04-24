@@ -11,7 +11,8 @@ function NavBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link href="#home">Saved</Nav.Link>
+            <Nav.Link href="#search">Search</Nav.Link>
+            <Nav.Link href="#saved">Saved</Nav.Link>
             <Nav.Link href="#link">Profile</Nav.Link>
           </Nav>
         </Navbar.Collapse>
