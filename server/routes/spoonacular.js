@@ -20,3 +20,16 @@ router.get("/findRecipes", auth, async (req, res) => {
         }
     }).then(body => res.json(body.data))
 });
+
+router.get("/savedRecipes", auth, async (req, res) => {
+    // have to pass in the token returned from user logging in?
+    const user = await User.findById(req.user.id); // get the user requested by their id
+    let recipeIds = user.recipes.toString; // converts array to comma separated string of recipe IDs
+
+    axios.get('https://api.spoonacular.com/recipes/informationBulk', {
+        params: {
+            apiKey: apiKey,
+            ids: recipeIds
+        }
+    }).then(body => res.json(body.data))
+})
