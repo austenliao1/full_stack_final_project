@@ -3,22 +3,23 @@ const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
-
 const User = require("../models/User");
 const axios = require('axios');
 const auth = require("./../middleware/auth");
+const app = express();
 
-const apiKey = '17010c15c8e94e889163ebf2cc50f61f'
+const apiKey = '569e690dc2684bc8872e096c069a107a'
 
-router.get("/findRecipes", auth, async (req, res) => {
-    const ingredientString = req.body.ingredients 
-
-    axios.get('https://api.spoonacular.com/recipes/findByIngredients', {
-        params: {
-            apiKey: apiKey,
-            ingredients: ingredientString
-        }
-    }).then(body => res.json(body.data))
+router.get("/find-recipes", async function (req, res) {
+  axios
+    .get("https://api.spoonacular.com/recipes/findByIngredients", {
+      params: {
+        apiKey: apiKey,
+        ingredients: "apples,+flour,+sugar",
+      },
+    })
+    .then((body) => res.json(body.data))
+    .catch((error) => console.log(error));
 });
 
 router.get("/savedRecipes", auth, async (req, res) => {
@@ -33,3 +34,5 @@ router.get("/savedRecipes", auth, async (req, res) => {
         }
     }).then(body => res.json(body.data))
 })
+
+module.exports = router;

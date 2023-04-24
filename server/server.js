@@ -1,5 +1,6 @@
 const express = require("express");
 const user = require("./routes/user");
+const spoonacular = require("./routes/spoonacular")
 const InitiateMongoServer = require("./config/db");
 const cors = require("cors");
 
@@ -25,6 +26,7 @@ app.get("/", (req, res) => {
 //  * Method - *
 //  */
 app.use("/user", user);
+app.use("/spoonacular", spoonacular);
 
 app.listen(PORT, (req, res) => {
   console.log(`Server Started at PORT ${PORT}`);
