@@ -1,11 +1,25 @@
 import React from 'react';
+import axios from 'axios';
 import RecipeCard from './RecipeCard';
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import './../App.css';
+import { useState } from 'react';
 
-function RecipeGrid({ recipes }) {
+const apiKey = '569e690dc2684bc8872e096c069a107a';
+
+function RecipeGrid({ recipeIds }) {
+  console.log(recipeIds)
+  const [recipes, setRecipes] = useState([])
+  axios.get('https://api.spoonacular.com/recipes/informationBulk', {
+    params: {
+        apiKey: apiKey,
+        ids: recipeIds
+    }
+  }).then(body => setRecipes(body.data))
+  console.log(recipes)
+
   return (
     <Container fluid="md">
       <Row>

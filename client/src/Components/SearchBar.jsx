@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 
 function SearchBar({ onSearch, onVeganToggle }) {
   const [isVegan, setIsVegan] = useState(false);
+  const [searchBarInput, setSearchBarInput] = useState("")
 
-  const handleSearch = (e) => {
-    onSearch(e.target.value, isVegan);
+  const handleSearch = () => {
+    onSearch(searchBarInput, isVegan);
   };
 
   const handleVeganToggle = (e) => {
@@ -12,14 +13,23 @@ function SearchBar({ onSearch, onVeganToggle }) {
     onVeganToggle(e.target.checked);
   };
 
+  const searchBarUpdate = (e) => {
+    // console.log("poo")
+    // console.log(e.target.value);
+    setSearchBarInput(e.target.value)
+  }
+
   return (
     <div className="search-bar">
       <input
         type="text"
         className="search-input"
         placeholder="Search recipes..."
-        onChange={handleSearch}
+        onChange={searchBarUpdate}
       />
+      <button onClick={handleSearch}>
+          Search
+      </button>
       <div className="search-checkbox">
         <label>
           <input
